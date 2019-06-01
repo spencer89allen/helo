@@ -4,12 +4,23 @@ import React, { Component } from 'react';
 class Auth extends Component {
 
     state = {
+        username: '',
+        password: '',        
+        newUsername: '',
+        newPassword: '',
+        newEmail: '',
+    
+    }
 
+    handleInput(name, value) {
+        this.setState({
+            [name]: value,
+        })
     }
 
 
     render() {
-        console.log(this.props)
+        // console.log(this.state)
         return (
             <div>
                 <section className="hero is-dark heroHeader is-medium ">
@@ -44,7 +55,12 @@ class Auth extends Component {
                                     <div className="field-body">
                                         <div className="field">
                                             <p className="control">
-                                                <input className="input" type="email" placeholder="username or email" />
+                                                <input className="input" 
+                                                    type="email" 
+                                                    placeholder="username or email" 
+                                                    name='username'
+                                                    onChange={(e) => this.handleInput(e.target.name, e.target.value)}
+                                                    />
                                             </p>
                                         </div>
                                     </div>
@@ -56,19 +72,24 @@ class Auth extends Component {
                                     <div className="field-body">
                                         <div className="field">
                                             <p className="control">
-                                                <input className="input" type="email" placeholder="password" />
+                                                <input className="input" 
+                                                    type="email" 
+                                                    placeholder="password" 
+                                                    name='password'
+                                                    onChange={(e) => this.handleInput(e.target.name, e.target.value)}
+                                                    />
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                                 <span>
-                                    <a className="button is-dark">Login</a>
+                                    <button className="button is-dark" >Login</button>
                                 </span>
                             </article> 
                         </div>
                         <div className="tile">
-                            <div class="tile is-child box">
-                                <p class="title">Register</p>
+                            <div className="tile is-child box">
+                                <p className="title">Register</p>
                                 <div className="field is-horizontal">
                                     <div className="field-label is-normal">
                                         <label className="label">Username: </label>
@@ -76,7 +97,12 @@ class Auth extends Component {
                                     <div className="field-body">
                                         <div className="field">
                                             <p className="control">
-                                                <input className="input" type="email" placeholder="7 characters long please" />
+                                                <input className="input" 
+                                                    type="email" 
+                                                    placeholder="7 characters long please" 
+                                                    name='newUsername'
+                                                    onChange={(e) => this.handleInput(e.target.name, e.target.value)}
+                                                    />
                                             </p>
                                         </div>
                                     </div>
@@ -88,7 +114,12 @@ class Auth extends Component {
                                     <div className="field-body">
                                         <div className="field">
                                             <p className="control">
-                                                <input className="input" type="email" placeholder="7 characters long with at least one number please" />
+                                                <input className="input" 
+                                                    type="email" 
+                                                    placeholder="7 characters long with at least one number please" 
+                                                    name='newPassword'
+                                                    onChange={(e) => this.handleInput(e.target.name, e.target.value)}
+                                                    />
                                             </p>
                                         </div>
                                     </div>
@@ -100,13 +131,18 @@ class Auth extends Component {
                                     <div className="field-body">
                                         <div className="field">
                                             <p className="control">
-                                                <input className="input" type="email" placeholder="email" />
+                                                <input className="input" 
+                                                    type="email" 
+                                                    placeholder="email" 
+                                                    name='newEmail'
+                                                    onChange={(e) => this.handleInput(e.target.name, e.target.value)}
+                                                    />
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                                 <span>
-                                    <a className="button is-dark">Register</a>
+                                    <button className="button is-dark">Register</button>
                                 </span>
                             </div>
                         </div>
