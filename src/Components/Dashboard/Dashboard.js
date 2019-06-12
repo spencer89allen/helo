@@ -2,14 +2,26 @@ import React, { Component } from 'react';
 
 
 class Dashboard extends Component {
-
+        
+        state = {
+            authenticated: false,
+        }
+    
 
 
     render() {
 
         return (
             <div>
-                Dashboard
+                {
+                    !this.state.authenticated ?
+
+                    (<p>Dashboard not authenticated</p>)
+
+                    :
+
+                    (Dashboard)
+                }
             </div>
         )
     }

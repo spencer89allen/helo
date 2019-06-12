@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 
 class Auth extends Component {
@@ -8,7 +9,6 @@ class Auth extends Component {
         password: '',        
         newUsername: '',
         newPassword: '',
-        newEmail: '',
     
     }
 
@@ -18,11 +18,37 @@ class Auth extends Component {
         })
     }
 
+    handleRegister() {
+        if ( this.state.newUsername.length === 0 || this.state.newPassword.length === 0 ) {
+            alert('Please fill in Username, and Password input fields')
+        } else {
+            const { newUsername, newPassword } = this.state;
+            const body = { newUsername, newPassword };
+
+            axios.post(`/auth/register`, body ).then()
+        }
+    }
+
+    handleLogin() {
+        if (this.state.username.length === 0 || this.state.password.length === 0) {
+            alert('Please fill in Username, and Password input fields')
+        } else {
+            const { username, password } = this.state
+            const body = { username, password }
+
+            axios.post(`/auth/login`, body).then((res) => {
+                console.log(res)
+                // this.props.login(res.data)
+                // this.props.history.goBack()
+            })
+        }
+    }
+
 
     render() {
-        // console.log(this.state)
+        // console.log()
         return (
-            <div>
+            <div >
                 <section className="hero is-dark heroHeader is-medium ">
                     <div className="hero-body">
                         <div className="container">
@@ -37,7 +63,7 @@ class Auth extends Component {
                         </h1>
                             <h2 className="subtitle"
                                 style={{ color: 'white' }}>
-                                The Exclusive Online Chat Site
+                                The Exclusive Online Site
                         </h2>
                         </div>
                     </div>
@@ -82,8 +108,9 @@ class Auth extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                <span>
-                                    <button className="button is-dark" >Login</button>
+                                <br />
+                                <span className='buttons is-right'>
+                                    <button className="button is-dark " onClick={() => this.handleLogin()}>Login</button>
                                 </span>
                             </article> 
                         </div>
@@ -124,7 +151,7 @@ class Auth extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="field is-horizontal">
+                                {/* <div className="field is-horizontal">
                                     <div className="field-label is-normal">
                                         <label className="label">Email: </label>
                                     </div>
@@ -140,9 +167,10 @@ class Auth extends Component {
                                             </p>
                                         </div>
                                     </div>
-                                </div>
-                                <span>
-                                    <button className="button is-dark">Register</button>
+                                </div> */}
+                                <br />
+                                <span className='buttons is-right'>
+                                    <button className="button is-dark" onClick={() => this.handleRegister()}>Register</button>
                                 </span>
                             </div>
                         </div>
