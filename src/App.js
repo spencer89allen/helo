@@ -1,16 +1,17 @@
 import React from 'react';
 
+import SideNav from './Components/SideNav/SideNav';
 import routes from './routes';
 
-function App() {
-  
-  return (
+import './App.css';
 
-    <div>
-      <br />
-      { routes }
+function App() {
+  return (
+    <div className='App'>
+      <SideNav />
+      {routes}
     </div>
-  );
+  )
 }
 
 export default App;
